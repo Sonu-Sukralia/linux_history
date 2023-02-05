@@ -1,0 +1,685 @@
+sudo apt update
+sudo apt upgrade
+sudo apt update
+sudo apt upgrade
+sudo nano /etc/dhcpcd.conf
+sudo reboot
+sudo apt update
+sudo apt upgrade
+ipconfig
+ifconf
+ifconfig
+curl -fsSL https://get.casaos.io | sudo bash
+sudo apt update
+sudo apt upgrade
+sudo apt install curl gnupg
+sudo mkdir /etc/apt/keyrings
+DISTRO="$( awk -F'=' '/^ID=/{ print $NF }' /etc/os-release )"
+CODENAME="$( awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/os-release )"
+curl -fsSL https://repo.jellyfin.org/${DISTRO}/jellyfin_team.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/jellyfin.gpg
+cat <<EOF | sudo tee /etc/apt/sources.list.d/jellyfin.sources
+Types: deb
+URIs: https://repo.jellyfin.org/${DISTRO}
+Suites: ${CODENAME}
+Components: main
+Architectures: $( dpkg --print-architecture )
+Signed-By: /etc/apt/keyrings/jellyfin.gpg
+EOF
+
+sudo apt update
+sudo apt install jellyfin
+sudo apt update
+sudo apt upgrade
+ls
+ls /
+sudo mkdir /NAS 
+ls
+ls /
+sudo chmod 777 /NES/
+sudo chmod 777 /NAS/
+LS /
+ls /
+lsblk
+sudo apt install exfat-utils exfat-fuse ntfs-3g
+sudo apt install samba samba-common-bin
+lsblk
+sudo umonut -R /media/devmon/Usb
+sudo umount -R /media/devmon/Usb
+sudo mount /dev/sda1 /NAS/
+sudo mount /dev/sda2 /NAS/
+lsblk
+sudo nano /etc/samba/smb.conf
+sudo smbpasswd -a pi
+sudo nano /etc/fstab
+lsblk
+sudo reboot
+wget "https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-arm64.tgz"
+ls
+sudo tar zxvf ngrok-v3-stable-linux-arm64.tgz 
+sudo ./ngrok config add-authtoken 26b1iofcgYxkAqkOXqDpIoB5qeR_4ureSSmrRPuyTscJjtfCb
+sudo ./ngrok http 192.168.29.15:8096
+lsblk
+docker run -d --sysctl net.ipv4.ping_group_range="0 2147483647" --env TENANT_URL="https://starlink.twingate.com" --env ACCESS_TOKEN="eyJhbGciOiJFUzI1NiIsImtpZCI6InJOckZ3OWVRVEoyLXNENUJFX0U0cWF6ek9sejZ4Ql84c3otRHJRRnRQZEEiLCJ0eXAiOiJEQVQifQ.eyJudCI6IkFOIiwiYWlkIjoiMzQ5MDUiLCJkaWQiOiJkZXZpY2UtYW5jLTE5NjAxLWFuLTEwN2RkN2NkLWZiMmMtNDQ4Ny1iMGQyLTZlNDlmODY4MjllMCIsImp0aSI6ImE5NGJkZTFlLTFmNjYtNGNlNi1iNDdlLTY2YzZkNzE1MzI3NyIsImlzcyI6InR3aW5nYXRlIiwiYXVkIjoic3RhcmxpbmsiLCJleHAiOjE2NzI2NTgzOTQsImlhdCI6MTY3MjY1ODA5NCwiYXBfZXhwIjp7IjU1NTA1IjoxNjcyNjYxNjk0fSwidmVyIjoiMSIsInVpZCI6bnVsbH0.JTcYnjlLGdB8d7lcEI5fteN6qu1abPOPQvPSShgvTgANzmbOsRyq5Jd_jCWG_uOSHYKAYXjD72JzqZEJCOFMRQ" --env REFRESH_TOKEN="uispKhbjLxCZRi-oIkxxwhSLl49L2A0oKxJEPjh_yqqTMRF6X7wZjF6petwtNKnHELjoU_c_JydhUZ7d6-xddjTbXMculLXmLijlzOD_-LKuvdWBMqdB1AMro48r8EGBNswJFA"  --env TWINGATE_LABEL_HOSTNAME="`hostname`" --name "twingate-nickel-earwig" --restart=unless-stopped $(docker run --help | grep -- --pull >/dev/null && echo "--pull=always") twingate/connector:1
+sudo docker run -d --sysctl net.ipv4.ping_group_range="0 2147483647" --env TENANT_URL="https://starlink.twingate.com" --env ACCESS_TOKEN="eyJhbGciOiJFUzI1NiIsImtpZCI6InJOckZ3OWVRVEoyLXNENUJFX0U0cWF6ek9sejZ4Ql84c3otRHJRRnRQZEEiLCJ0eXAiOiJEQVQifQ.eyJudCI6IkFOIiwiYWlkIjoiMzQ5MDUiLCJkaWQiOiJkZXZpY2UtYW5jLTE5NjAxLWFuLTEwN2RkN2NkLWZiMmMtNDQ4Ny1iMGQyLTZlNDlmODY4MjllMCIsImp0aSI6ImE5NGJkZTFlLTFmNjYtNGNlNi1iNDdlLTY2YzZkNzE1MzI3NyIsImlzcyI6InR3aW5nYXRlIiwiYXVkIjoic3RhcmxpbmsiLCJleHAiOjE2NzI2NTgzOTQsImlhdCI6MTY3MjY1ODA5NCwiYXBfZXhwIjp7IjU1NTA1IjoxNjcyNjYxNjk0fSwidmVyIjoiMSIsInVpZCI6bnVsbH0.JTcYnjlLGdB8d7lcEI5fteN6qu1abPOPQvPSShgvTgANzmbOsRyq5Jd_jCWG_uOSHYKAYXjD72JzqZEJCOFMRQ" --env REFRESH_TOKEN="uispKhbjLxCZRi-oIkxxwhSLl49L2A0oKxJEPjh_yqqTMRF6X7wZjF6petwtNKnHELjoU_c_JydhUZ7d6-xddjTbXMculLXmLijlzOD_-LKuvdWBMqdB1AMro48r8EGBNswJFA"  --env TWINGATE_LABEL_HOSTNAME="`hostname`" --name "twingate-nickel-earwig" --restart=unless-stopped $(docker run --help | grep -- --pull >/dev/null && echo "--pull=always") twingate/connector:1
+curl "https://binaries.twingate.com/connector/setup.sh" | sudo TWINGATE_ACCESS_TOKEN="eyJhbGciOiJFUzI1NiIsImtpZCI6InJOckZ3OWVRVEoyLXNENUJFX0U0cWF6ek9sejZ4Ql84c3otRHJRRnRQZEEiLCJ0eXAiOiJEQVQifQ.eyJudCI6IkFOIiwiYWlkIjoiMzQ5MTAiLCJkaWQiOiJkZXZpY2UtYW5jLTE5NjA0LWFuLTc1YTdkODZhLWNjYmMtNDY2ZC1hOGQwLWI4NDIzZDllOGU2NiIsImp0aSI6ImM0ZmM2MjUyLTIxNTctNGUwNC1iYTQ5LWMyYTUyOWQ5MzMyNyIsImlzcyI6InR3aW5nYXRlIiwiYXVkIjoic29udSIsImV4cCI6MTY3MjY1ODY5OSwiaWF0IjoxNjcyNjU4Mzk5LCJhcF9leHAiOnsiMjY1NTYiOjE2NzI2NjE5OTl9LCJ2ZXIiOiIxIiwidWlkIjpudWxsfQ.rTsF11W3GzksH-GkzxKe_JOfpltUkxDnhmg4acr22tuN5sHB8qJgdRo2bU6C4sd1CqHhY1hdiEB1nmAVP3wGWg" TWINGATE_REFRESH_TOKEN="z8HrKRAkRLM8XHR6klwqkA_4mOH70_IZMS4N0J5kwFHCWz9H0rHUBSKQUpRWYxhJMs3aQolCMhl3GHtDFg1B1Lr0rhrsz8YfgpGmIOWbELzcu7xtfg_ag801yldBgaod6VaXeQ" TWINGATE_URL="https://sonu.twingate.com" bash
+docker images
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get update
+sudo connectd_installer
+sudo apt install connectd
+sudo connectd_installer
+history
+sudo apt update
+sudo apt upgrade
+sudo ./ngrok http 192.168.29.15:8096
+sudo mkdir Usb
+ls
+sudo ./ngrok config add-authtoken 26b1iofcgYxkAqkOXqDpIoB5qeR_4ureSSmrRPuyTscJjtfCb
+sudo nano /root/.config/ngrok/ngrok.yml
+./ngrok start
+./ngrok start --all
+sudo 
+./ngrok.yml start --all
+./ngrok start --all
+ngrok start --all
+sudo ngrok start --all
+ngrok start --all
+ngrok start /root/.config/ngrok/ngrok.yml 
+./ngrok start /root/.config/ngrok/ngrok.yml 
+ngrok start --all
+ngrok start tunnels
+ngrok start deshboard
+ngrok start proto
+ngrok start http
+sudo ./ngrok http 192.168.29.15:8096
+lsblk
+sudo mkdir /USB
+sudo chmod 777 /USB/
+sudo mount /dev/mmcblk0p2 /USB/
+lsblk
+sudo nano /etc/fstab
+lsblk
+sudo apt update
+
+sudo apt-get update 
+sudo apt-get upgrade
+sudo rebot
+sudo reboot
+which ls
+which jellyfin
+ls
+ls/
+lsexit
+pwd
+cd ..
+ls
+cd home
+cd pi
+ls
+pwd
+sudo ./ngrok http 192.168.29.15:8096
+which jellyfin
+sudo apt-get update 
+sudo apt-get upgrade
+apt-get install gedit
+root
+su
+sudo su
+sudo ./ngrok http 192.168.29.15:8096
+sudo ./ngrok http 192.168.29.15:8096 
+clear
+sudo ./ngrok http 192.168.29.15:8096 
+ls
+rm nohup.out 
+sudo ./ngrok http 192.168.29.15:8096 
+clear
+sudo ./ngrok http 192.168.29.15:8096 
+sudo reboot
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+nohup
+
+ls
+gedit nohup.out 
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+ls
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+gedit nohup.out 
+sudo su
+gedit nohup.out 
+cat  nohup.out 
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+cat nohup.out 
+sudo ./ngrok http 192.168.29.15:8096 &
+ps
+ps aux
+ls
+sudo ./ngrok http 192.168.29.15:8096 
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+sudo ./ngrok http 192.168.29.15:8096 
+which ngrok.log
+which log
+cd tmp
+pwd
+ls
+ls/
+ls\
+cd/
+cdexit
+ls lrt
+ls -lrt
+nano sk.sh
+./sk.sh
+chmod +x sk.sh
+./sk.sh
+nano sk.sh
+./sk.sh
+nano sk.sh
+./sk.sh
+nano sk.sh
+./sk.sh
+nano sk.sh
+./sk.sh
+nano sk.sh
+./sk.sh
+nano sk.sh
+./sk.sh
+ls
+rm sk.sh
+ls
+sudo ./ngrok http 192.168.29.15:8096 
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+nohup /ngrok start --all --config="/ngrok.yml" &> /tmp/ngrok.log & sleep 1
+tail /tmp/ngrok.log
+nohup ./ngrok start --all --config="/ngrok.yml" &> /tmp/ngrok.log & sleep 1
+cd /tmp/
+ls
+cat ngrok.log 
+pwd
+which tmp
+where tmp
+pwd
+ls
+lrt
+ls lrt
+ls/
+lsexit
+cd ..
+cd ../
+ls
+pwd
+ls
+cd home/
+ls
+cd /home/
+ls
+cd ..
+cd..
+ls
+cd 
+ls
+cd
+cd ../
+ls
+cd ..
+ls
+cd
+cd ../
+cd
+ls
+cd ../
+ls
+cd ..
+ls
+cd
+ls
+cd ../
+cd ..
+ls
+pwd
+whoami
+where 
+where am i
+pwd
+cd ..
+cd../
+cd ../
+cd
+pwd
+ls
+cd home
+cd home/
+cd /home
+ls
+cd /pi
+ls
+cd pi
+ls
+cd /home/pi
+ls
+pwd
+cd ..
+pwd
+ls
+cd /bin
+ls
+cd ..
+ls
+cd /home
+ls
+cd /pi
+ls
+pwd
+cd /home
+cd /home/pi
+ls
+cd /home
+ls
+cd /
+ls
+cd ls
+cd /pi
+cd /home/pi
+ls
+cd ..
+ls
+cd ..
+pwd
+cd ..
+pwd
+ls
+cd /tmp
+ls
+cd..
+cd 
+ls
+cd /tmp
+ls
+cd /NAS
+ls
+cd /Sonu
+cd Sonu
+ls
+cd ,,
+cd ..
+cd /home
+ls
+cd pi
+ls
+cd ..
+ls
+cd ..
+ls
+pws
+pwd
+where Sonu
+sudo su
+ls
+whereis nohup
+ls
+cd ..
+ls
+cd /home/pi
+ls
+whereis nohup.out
+whereis ngrok
+whereis Sonu
+ls
+whereis Usb
+whereis nohup.out
+cd /usr/bin/nohup
+cd /usr/bin
+ls
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+pwd
+cd ..
+cd /home
+ls
+cd /home/pi
+mkdir test
+;s
+ls
+mkdir /test1
+mkdir /tas
+ls
+cd ..
+cd..
+pwd
+ls
+cd ../
+ls
+mkdir /tes
+mkdir tes
+mkdir /tes/
+pwd
+ls
+sudo mkdir tas
+ls
+mkdir tas
+mkdir tas1
+sudo rm tas
+rm tas
+rmdir tas
+sudo rmdir tas
+ls
+sudo /home/pi
+cd /home/pi
+ls
+rm test
+rmdir test
+ls
+cd /Usb
+cd Usb
+ls
+cd ..
+ls
+rmdir Usb
+ls
+nano sk
+ls
+rm sk
+ls
+thop
+htop
+d6c2er -v
+sudo apt update
+sudo apt upgrade
+docker -v
+docker ps
+sudo docker ps
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+sudo reboot
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+sudo reboot
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+sudo reboot
+sudo apt update
+sudo apt upgrade
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+sudo reboot
+sudo ./ngrok http 192.168.29.15:8096
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+dovker version
+docker version
+docker run hello-world
+sudo docker run hello-world
+docker ps
+sudo docker ps
+sudo docker ps --all
+sudo docker create hello-world
+sudo docker create twingate
+sudo docker create twingate/connector:1
+sudo docker start -a 95e45277ae63b02dfad1b134d3129026c8d0b989807428f774a26c6b1b73ef8f
+sudo docker start 95e45277ae63b02dfad1b134d3129026c8d0b989807428f774a26c6b1b73ef8f
+sudo docker start -a 95e45277ae63b02dfad1b134d3129026c8d0b989807428f774a26c6b1b73ef8f
+sudo docker ps --all
+sudo docker logs 95e45277ae63b02dfad1b134d3129026c8d0b989807428f774a26c6b1b73ef8f
+sudo docker kill -all
+sudo docker kill --all
+sudo docker ps --all
+sudo docker stop c068e9bacf9d
+sudo docker ps --all
+sudo docker rm c068e9bacf9d
+sudo docker ps --all
+sudo docker stop 4a68eaab97f9
+sudo docker rm 4a68eaab97f9
+sudo docker ps --all
+sudo docker stop e0f53d9d9613
+sudo docker rm e0f53d9d9613
+sudo docker ps --all
+sudo docker stop 95e45277ae63
+sudo docker rm 95e45277ae63
+sudo docker ps --all
+sudo docker create hello-world
+sudo docker ps --all
+sudo docker rm c1825c0b5bfd
+sudo docker ps --all
+sudo docker exec -it ab67f326e59d sh
+sudo docker create hello-world
+sudo docker ps --all
+sudo docker exec -it 3aeaa94d673d sh
+sudo docker ps --all
+sudo docker run -it hello-world sh
+sudo docker ps --all
+sudo docker rm 3aeaa94d673d
+sudo docker rm 467ce80a021e
+sudo docker ps --all
+sudo docker run busybox
+sudo docker run -it busybox sh
+sudo docker ps --all
+sudo docker run d1594ed32a5b
+sudo docker run -it busybox sh
+sudo docker ps --all
+sudo docker run -it 46359a6e442c sh
+sudo docker exec -it 46359a6e442c sh
+sudo docker start -a 46359a6e442c sh
+sudo docker start -a 
+sudo docker ps --all
+sudo docker rm 46359a6e442c
+sudo docker stop 46359a6e442c
+sudo docker rm 46359a6e442c
+sudo docker ps --all
+sudo docker stop d1594ed32a5b
+sudo docker rm d1594ed32a5b
+sudo docker ps --all
+sudo docker run busybox
+sudo docker ps --all
+sudo docker stop 63a49285a213
+sudo docker rm 63a49285a213
+sudo docker ps --all
+sudo docker run busybox
+sudo docker ps --all
+sudo docker start -a 46359a6e442c sh
+sudo docker start -a 25944ca06e7c sh
+sudo docker ps --all
+sudo docker run -it 25944ca06e7c sh
+sudo docker run -it busybox sh
+sudo docker ps --all
+sudo docker exec -it 7f035b2176fa sh
+sudo docker ps --all
+sudo dokcer attach 7f035b2176fa
+sudo docker attach 7f035b2176fa
+sudo docker start -it 7f035b2176fa
+sudo docker start 7f035b2176fa
+sudo docker exec -it 7f035b2176fa sh
+sudo docker ps --all
+sudo docker run 894571de4e57
+sudo docker run -a 894571de4e57
+sudo docker start -a 894571de4e57
+sudo docker exec -it 894571de4e57 sh
+sudo docker start -a 894571de4e57
+sudo docker exec -it 894571de4e57 sh
+sudo docker start 894571de4e57
+sudo docker exec -it 894571de4e57 sh
+sudo docker ps --all
+sudo docker exec -it 7f035b2176fa sh
+sudo docker ps --all
+sudo docker rm 894571de4e57
+sudo docker ps --all
+sudo docker stop 7f035b2176fa
+sudo docker ps --all
+sudo docker start -a 7f035b2176fa
+sudo docker ps --all
+sudo docker stop 7f035b2176fa
+sudo docker rm 25944ca06e7c
+sudo docker ps --all
+sudo docker stop 9535435c1989
+sudo docker ps --all
+clear
+sudo docker ps --all
+sudo docker start 9535435c1989
+sudo docker ps --all
+sudo docker ps --all
+sudo docker exec -it 7f035b2176fa sh
+sudo docker ps --all
+sudo docker start 894571de4e57
+sudo docker ps --all
+sudo docker attach 894571de4e57
+sudo docker start 894571de4e57
+sudo docker attach 894571de4e57
+sudo reboot
+sudo docker ps --all
+sudo docker exec -it 9535435c1989 sh
+sudo docker ps --all
+sudo docker star -a 7f035b2176fa
+sudo docker start -a 7f035b2176fa
+sudo docker ps --all
+sudo docker exec -it 7f035b2176fa sh
+clear
+sudo docker ps --all
+sudo docker exec -it 7f035b2176fa sh
+sudo docker ps 
+sudo docker ps -all
+sudo docker ps --all
+sudo docker ps -all
+sudo docker ps --all
+sudo docker start -a 894571de4e57
+sudo docker ps --all
+sudo docker start 894571de4e57
+sudo docker exec -it 894571de4e57 sh
+sudo docker exec -it 25944ca06e7c sh
+sudo docker start 25944ca06e7c
+sudo docker exec -it 25944ca06e7c sh
+sudo docker ps --all
+sudo docker run -it 894571de4e57
+
+sudo docker exec -it 894571de4e57 sh
+sudo docker run -it 894571de4e57
+sudo docker start 894571de4e57
+sudo docker exec -it 894571de4e57 sh
+sudo doker run -it busybox sh
+sudo docker run -it busybox sh
+ls
+sudo docker ps --all
+sudo docker exec -it 9535435c1989 sh
+ls
+sudo docker ps --all
+sudo docker stop --all
+sudo docker stop 9535435c1989
+sudo docker ps --all
+sudo docker start 9535435c1989
+sudo docker ps --all
+sudo docker exec -it 9535435c1989 sh
+clear
+sudo docker ps --all
+clear
+sudo docker ps --all
+sudo docker start 9535435c1989 sh
+sudo docker start 9535435c1989
+sudo docker ps --all
+sudo docker exec -it 9535435c1989 sh
+ls
+nano docker-compose.yml 
+sudo apt-get install libffi-dev libssl-dev
+sudo apt install python3-dev
+sudo apt-get install -y python3 python3-pip
+sudo pip3 install docker-compose
+ls
+sudo systemctl enable docker
+docker run hello-world
+sudo docker run hello-world
+sudo apt-get upgrade
+sudo apt update
+sudo apt upgrade
+sudo apt update
+sudo apt upgrade
+ls
+docker compose -v
+docker compose version
+sudo docker-compose up
+ls
+docker ps --all
+sudo docker ps --all
+sudo docker compose ps
+sudo docker compose ps --all
+ls
+cat docker-compose.yml 
+sudo docker-compose up
+docker ps --all
+sudo docker ps --all
+sudo docker compose ps
+sudo docker compose ps -all
+sudo docker compose ps --all
+sudo docker rm a83a22058e94
+sudo docker rm 
+sudo docker ps --all
+nohup sudo ./ngrok http 192.168.29.15:8096 &
+sudo docker ps --all
+code .
+sudo docker ps --all
+ls
+cd ..
+ls
+cd .
+cd ..
+ls
+cd home
+cd pi
+ls
+sudo docker conmpose
+sudo docker compose
+ls
+touch sk.yml
+cat sk.yml
+ls
+cat sk.yml
+ls
+cat sk
+cat sk.yml 
+ls
+vi sk.yml 
+cat sk.yml 
+ls
+rm sk.YML
+ls
+rm sk.yml
+ls
+cat sk.py
+touch sk.py
+ls
+nano sk.py 
+cat sk.py 
+ls
+rm sk.py
+ls
+touch docker-compose.yml
+cat docker-compose.yml 
+nano docker-compose.yml 
+sudo docker ps --all
+sudo docker stop 9535435c1989
+sudo docker ps --all
+sudo docker rm 9535435c1989
+sudo docker ps --all
+sudo docker run -a 7f035b2176fa
+sudo docker run 7f035b2176fa
+sudo docker start -a 7f035b2176fa
+sudo docker ps --all
+ls
+sudo docker-compose up
+docker-compose up
+sudo docker-compose 
+sudo docker compose
+sudo docker-compose up
+sudo apt-get -y install python-pip
+sudo pip install docker-compose
+docker-compose --version
+sudo docker-compose --version
+docker-compose -v 
+sudo docker-compose build
+docker-compose build
+sudo docker-compose build
+sudo docker-compose version
+sudo usermod -aG docker ${USER}
+sudo su - ${USER}
+sudo apt update
+sudo apt upgrade
+wget http://downloads-global.3cx.com/downloads/sbc/3cxsbc.zip -O- | sudo bash
+wget http://downloads-global.3cx.com/downloads/misc/d10pi.zip; sudo bash d10pi.zip
+wget http://downloads-global.3cx.com/downloads/misc/d10pi.zip
+sudo bash d10pi.zip
+wget http://downloads-global.3cx.com/downloads/sbc/3cxsbc.zip -O- | sudo bash
+wget https://downloads-global.3cx.com/downloads/misc/d10pi.zip; sudo bash d10pi.zip
+sudo apt update
+sudo apt upgrade
+wget https://downloads-global.3cx.com/downloads/misc/d10pi.zip; sudo bash d10pi.zip
+wget http://downloads-global.3cx.com/downloads/sbc/3cxsbc.zip -O- | sudo bash
